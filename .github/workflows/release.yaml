@@ -51,7 +51,7 @@ jobs:
               echo "cannot make patch release from main branch"
               exit 1
             fi
-          elif [[ "${{ github.ref }}" = refs/heads/releases/* ]]; then
+          elif [[ "${{ github.ref }}" = refs/heads/ledger-build ]]; then
             if [ "${{ github.event.inputs.bumpType }}" != "patch" ]; then
               echo "cannot make major/minor release from release branch"
               exit 1
