@@ -10,7 +10,7 @@ do
     arch="$(echo "$platform" | awk -F/ '{print $NF}')"
     os="$(echo "$platform" | awk -F/ '{print $(NF-1)}')"
     echo "Building binary for OS $os Architecture $arch"
-    GOOS=$os GOARCH=$arch go build -o ./bin/axelard-"$os"-"$arch"-"$version" -mod=readonly -tags "$build_tags" -ldflags "'$ldflags'" ./cmd/axelard
+    CGO_ENABLED=1 GOOS=$os GOARCH=$arch go build -o ./bin/axelard-"$os"-"$arch"-"$version" -mod=readonly -tags "$build_tags" -ldflags "'$ldflags'" ./cmd/axelard
 done
 
 cd bin || exit 1
